@@ -127,9 +127,11 @@ defmodule Ueberauth.Strategy.Instagram do
   end
 
   defp user_query(conn) do
+    query_params = fetch_query_params(conn)
+
     conn
-    |> Map.merge(query_params(conn, :profile))
-    |> URI.encode_query
+    |> Map.merge(query_params[:profile])
+    |> URI.encode_query()
   end
 
   defp option(conn, key) do
