@@ -127,12 +127,10 @@ defmodule Ueberauth.Strategy.Instagram do
   end
 
   defp option(conn, key) do
-    default = Dict.get(default_options, key)
-
-    conn
-    |> options
-    |> Dict.get(key, default)
+    default = default_options() |> Map.new() |> Map.get(key)
+    conn |> options |> Map.new() |> Map.get(key, default)
   end
+
   defp option(nil, conn, key), do: option(conn, key)
   defp option(value, _conn, _key), do: value
 
