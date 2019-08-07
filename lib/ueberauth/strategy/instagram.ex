@@ -4,7 +4,7 @@ defmodule Ueberauth.Strategy.Instagram do
   """
 
   use Ueberauth.Strategy,
-    default_scope: "public_content",
+    default_scope: "basic",
     uid_field: :id,
     allowed_request_params: [
       :auth_type,
